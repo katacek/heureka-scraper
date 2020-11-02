@@ -4,7 +4,8 @@ const { handleStart, handleList, handleDetail, handleDetailSpecifikace, handleDe
 const { utils: { log } } = Apify;
 
 Apify.main(async () => {
-    const { startUrls } = await Apify.getInput()
+    const startUrls = await Apify.getInput();
+    console.log(startUrls)
     // const startUrls = "https://pletova-kosmetika.heureka.cz/"; 
     
     //const requestList = await Apify.openRequestList('start-urls', startUrls);
@@ -12,6 +13,7 @@ Apify.main(async () => {
 
     if (startUrls) {
         const urlList = startUrls.split(",");
+        console.log(urlList)
         for (url of urlList) {
             await requestQueue.addRequest(
                 {
