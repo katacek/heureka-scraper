@@ -72,3 +72,6 @@ Example item:
 }
 }
 ```
+
+## Compute units consumptios
+Ie. for 3 categories, there can be more than 40ths. items. For such amount, the actor run time is app. 10 hours and it consumes app. 10 compute units.
