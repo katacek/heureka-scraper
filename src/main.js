@@ -5,7 +5,6 @@ const { utils: { log } } = Apify;
 
 Apify.main(async () => {
     const { startUrls } = await Apify.getInput();
-    console.log(startUrls)
     // const startUrls = "https://pletova-kosmetika.heureka.cz/"; 
     
     //const requestList = await Apify.openRequestList('start-urls', startUrls);
@@ -38,15 +37,22 @@ Apify.main(async () => {
         throw new Error('Input url is missing!');
     }
 
+    const proxyConfiguration = await Apify.createProxyConfiguration({
+        groups: ['CZECH_LUMINATI'], // List of Apify Proxy groups
+        countryCode: 'CZ',
+        });
+    
+        
     const crawler = new Apify.CheerioCrawler({
-       // requestList,
+        // requestList,
         requestQueue,
-        //useApifyProxy: true,
+        useApifyProxy: true,
+        proxyConfiguration,
         useSessionPool: false,
         //persistCookiesPerSession: true,
         // Be nice to the websites.
         // Remove to unleash full power.
-        maxConcurrency:10,
+        //maxConcurrency:10,
         handlePageTimeoutSecs:60000,
        
        // context is made up by crawler, it contains $, page body, request url, response and session
@@ -55,7 +61,6 @@ Apify.main(async () => {
             // moreover, get userdata, and from them get label and put it to label 
             // alias (label = context.request.userData.label)
             const { url, userData: { label } } = context.request;
-            console.log('Page opened.', { label, url });
             log.info('Page opened.', { label, url });
             switch (label) {
                 case 'LIST':
