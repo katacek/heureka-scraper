@@ -10,15 +10,12 @@ exports.handleStart = async ({ $ }) =>
     const links = $('div#box-categories').find('li').map(function ()
     { return $(this).find('a').attr('href'); }).get();
     console.log(links);
-    let count = 0;
     for (let link of links)
     {   
-        count++;
-        if (count > 10) break;
-            await requestQueue.addRequest({
-            url: link,
-             userData: { label: 'LIST' },
-            });
+        await requestQueue.addRequest({
+        url: link,
+         userData: { label: 'LIST' },
+        });
     }
 
 };
@@ -28,12 +25,9 @@ exports.handleList = async ({ request, $ }) =>
     const requestQueue = await Apify.openRequestQueue();
     //add detail pages of all products on the page to requestQueue
     const links = $( ".product-container" ).map(function ()
-    { return $(this).find('a').attr('href'); }).get();
-    let count = 0;
+    { return $(this).find('a').attr('href'); }).get()
     for (let link of links)
     {
-        count++;
-        if (count > 10) break;
         const absoluteLink = urlClass.resolve(request.url, link);
         await requestQueue.addRequest({
             url: absoluteLink + '?loadOffersSync=1',
