@@ -1,0 +1,16 @@
+{
+    "title": "Heureka scraper",
+    "description": "Scrapes heureka.cz products based on given categories.",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "startUrls": {
+            "title": "Categories url address/es",
+            "type": "string",
+            "description": "Url address/es of categories to be scraped, you can comma-separate multiple addresses.",
+            "prefill": "https://pletova-kosmetika.heureka.cz/, https://telova-kosmetika.heureka.cz/",
+            "editor": "textfield"
+        }
+    },
+    "required": ["startUrls"]
+}
