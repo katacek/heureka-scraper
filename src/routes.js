@@ -6,6 +6,7 @@ const { utils: { log } } = Apify;
 // at this point, the main page is already loaded in $
 exports.handleStart = async ({ $, request }) =>
 {
+    log.info($.html())
     const requestQueue = await Apify.openRequestQueue();
     //start page, add all categories links to requestQueue
     //const links = $( "a[data-type='subcategory']" ).map(function ()
