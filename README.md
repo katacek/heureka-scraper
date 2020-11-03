@@ -1,7 +1,9 @@
 # Heureka.cz scraper
 
 The actor scrapes all products from defined sub-categories (given as input) from [Heureka.cz](https://www.heureka.cz/).
-The correct sub-category for the input is the one that has no other sub-categories included. I.e. "https://bazeny-a-doplnky.heureka.cz/" is correct as after clicking on any link here, you get the products details. Url "https://dum-zahrada.heureka.cz/" is not valid as after cliking on links there, you get to another groups of categories.
+
+The **correct sub-category** for the input is **the one that has no other sub-categories included**. I.e. "https://bazeny-a-doplnky.heureka.cz/" is correct as after clicking on any link here, you get the products details. Url "https://dum-zahrada.heureka.cz/" is not valid as after cliking on links there, you get to another groups of categories.
+
 For each product, it gets following data: item url, item name, current price, if the product is in TOP ones, list of shops where to buy it, product specification and reviews. 
 
 Example item:
