@@ -1,6 +1,6 @@
 # Heureka.cz scraper
 
-The actor will scrape all products from 3 categories on [Heureka.cz](https://www.heureka.cz/). It is going through the whole categories and pagination, gets the link to the product details and gets data (item name, price, shops list, reviews, product specification) in format as shown below.
+The actor scrapes all products from defined categories (given as input) on [Heureka.cz](https://www.heureka.cz/). For each product, it gets following data: item url, item name, current price, if the product is in TOP ones, list of shops where to buy it, product specification and reviews. 
 
 Example item:
 ``` 
