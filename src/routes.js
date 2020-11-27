@@ -8,19 +8,30 @@ exports.handleStart = async ({ $, request }) =>
 {
     const requestQueue = await Apify.openRequestQueue();
     //start page, add all categories links to requestQueue
-    //const links = $( "a[data-type='subcategory']" ).map(function ()
-    //{ return $(this).attr('href'); }).get();
-    const links = $('div#box-categories').find('li').find('h2').map(function ()
+   
+    const listAlreadyExist = $( ".product-container" ).map(function ()
     { return $(this).find('a').attr('href'); }).get();
-    
-    for (let link of links)
-    {   
-        // request is an object, setting url to link and in userdata, setting new dictionary label: LIST
-        // it is me who is setting the label value, just using it for making the crawler fcn more clear
-         await requestQueue.addRequest({
-            url: link,
-             userData: { label: 'LIST' },
+
+    if (listAlreadyExist.length > 0) {
+        await requestQueue.addRequest({
+            url: request.url,
+            userData: { label: 'LIST' },
+            uniqueKey: request.url + 'list'
         });
+    } else {
+
+        const links = $('div#box-categories').find('li').find('h2').map(function ()
+        { return $(this).find('a').attr('href'); }).get();
+        
+        for (let link of links)
+        {   
+            // request is an object, setting url to link and in userdata, setting new dictionary label: LIST
+            // it is me who is setting the label value, just using it for making the crawler fcn more clear
+            await requestQueue.addRequest({
+                url: link,
+                userData: { label: 'LIST' },
+            });
+        }
     }
 
 };

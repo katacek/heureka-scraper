@@ -5,7 +5,7 @@ const { utils: { log } } = Apify;
 
 Apify.main(async () => {
     const { startUrls } = await Apify.getInput();
-    // const startUrls = "https://pletova-kosmetika.heureka.cz/"; 
+    //const startUrls = "https://krmivo-psy.heureka.cz/"; 
     
     //const requestList = await Apify.openRequestList('start-urls', startUrls);
     const requestQueue = await Apify.openRequestQueue();
@@ -38,7 +38,7 @@ Apify.main(async () => {
     }
 
     const proxyConfiguration = await Apify.createProxyConfiguration({
-        groups: ['CZECH_LUMINATI'], // List of Apify Proxy groups
+        groups: ['RESIDENTIAL'], // List of Apify Proxy groups
         countryCode: 'CZ',
         });
     
