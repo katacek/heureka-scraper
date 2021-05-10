@@ -9,7 +9,7 @@ exports.handleStart = async ({ $, request }) =>
     const requestQueue = await Apify.openRequestQueue();
     //start page, add all categories links to requestQueue
    
-    const listAlreadyExist = $( ".product-container" ).map(function ()
+    const listAlreadyExist = $( ".c-product__title" ).map(function ()
     { return $(this).find('a').attr('href'); }).get();
 
     if (listAlreadyExist.length > 0) {
