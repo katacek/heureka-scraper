@@ -12,7 +12,8 @@ exports.handleStart = async ({ $, request }) =>
     const listAlreadyExist = $( ".c-product__title" ).map(function ()
     { return $(this).find('a').attr('href'); }).get();
     
-    console.log($.html())
+    log.info('I am in handleStart()')
+    log.info($.html())
 
     if (listAlreadyExist.length > 0) {
         await requestQueue.addRequest({
